@@ -110,7 +110,7 @@ public class Client {
   
   private void setupAppMasterJar(Path jarPath, LocalResource appMasterJar) throws IOException {
     FileStatus jarStat = FileSystem.get(conf).getFileStatus(jarPath);
-    appMasterJar.setResource(ConverterUtils.getYarnUrlFromPath(jarPath));
+    appMasterJar.setResource(ConverterUtils.getYarnUrlFromPath(jarStat.getPath()));
     appMasterJar.setSize(jarStat.getLen());
     appMasterJar.setTimestamp(jarStat.getModificationTime());
     appMasterJar.setType(LocalResourceType.FILE);
